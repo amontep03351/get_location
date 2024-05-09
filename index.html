@@ -21,12 +21,34 @@
 
     function sendEmail(position) {
         const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        alert("latitude"+latitude+" longitude"+longitude);
+        const longitude = position.coords.longitude; 
         // ส่งข้อมูลตำแหน่งไปยังเซิร์ฟเวอร์เพื่อทำการส่งอีเมล์
-        
+        insertCoordinates(latitude,longitude)
     }
+    function insertCoordinates(latitude,longitude) {
+ 
 
+      // ส่งข้อมูลไปยังเซิร์ฟเวอร์ของคุณ
+      fetch('/insert-coordinates', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ latitude, longitude })
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Data inserted successfully:', data);
+      })
+      .catch(error => {
+        console.error('Error inserting data:', error);
+      });
+    }
     function handleError(error) {
         console.error('Error getting location:', error);
     }
