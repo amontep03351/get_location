@@ -7,7 +7,7 @@ const port = 3000;
 // กำหนดการเชื่อมต่อกับฐานข้อมูล PostgreSQL
 const pool = new Pool({
   user: 'root',
-  host: 'dpg-cou3qegl5elc73c544gg-a',
+  host: 'postgres://@dpg-cou3qegl5elc73c544gg-a/log_location',
   database: 'log_location',
   password: '4EjYnHJo38HbTuimE3X9rNVr77qMbwY8',
   port: '5432',
