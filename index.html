@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     
+</head>
+<body>
+    
+</body>
+<script>
+    getLocation();
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(sendEmail, handleError);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function sendEmail(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        alert("latitude"+latitude+" longitude"+longitude);
+        // ส่งข้อมูลตำแหน่งไปยังเซิร์ฟเวอร์เพื่อทำการส่งอีเมล์
+        
+    }
+
+    function handleError(error) {
+        console.error('Error getting location:', error);
+    }
+
+</script>
+</html>
